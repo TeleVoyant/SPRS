@@ -1,0 +1,179 @@
+version: '3.8'
+services:
+
+  ## for POSTGRESQL database
+  #postgres:
+  #  image: postgres
+  #  container_name: postgres
+  #  stdin_open: true
+  #  tty: true
+  #  restart: unless-stopped
+  #  environment:
+  #    POSTGRES_USER: root
+  #    POSTGRES_PASSWORD: toor
+  #    POSTGRES_DB: practiceDB
+  #  ports:
+  #    - 5432:5432
+  #  volumes:
+  #    - type: volume
+  #      source: pgdata
+  #      target: /var/lib/postgresql/data
+  #      volume:
+  #        nocopy: false
+  #  healthcheck:
+  #    test: ["CMD-SHELL", "sh -c 'pg_isready -U root -d practiceDB'"]
+  #    interval: 30s
+  #    timeout: 5s
+  #    retries: 5
+  #    start_period: 30s
+
+  ## database manager
+  #pgadmin:
+  #  image: dpage/pgadmin4
+  #  container_name: pgadmin
+  #  stdin_open: true
+  #  tty: true
+  #  restart: unless-stopped
+  #  environment:
+  #    PGADMIN_DEFAULT_EMAIL: admin@admin.com
+  #    PGADMIN_DEFAULT_PASSWORD: admin
+  #    PGADMIN_CONFIG_SERVER_MODE: 'False'
+  #  ports:
+  #    - 5433:80
+  #  volumes:
+  #    - type: volume
+  #      source: pgadmin
+  #      target: /var/lib/pgadmin
+  #      volume:
+  #        nocopy: false
+  #  depends_on:
+  #    - postgres
+
+  # for MYSQL database
+  mysql:
+    image: ${MYSQL_IMAGE}:${MYSQL_VERSION}
+    container_name: ${MYSQL_NAME}
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    env_file:
+      - ".env"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ENV_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_ENV_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_ENV_PASSWORD}
+    ports:
+      - ${MYSQL_PORT}:3306
+    volumes:
+      - type: volume
+        source: mysqldata
+        target: /var/lib/mysql
+        volume:
+          nocopy: false
+      - type: bind
+        source: .docker/mysql/my.cnf
+        target: /etc/my.cnf
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-ptoor"]
+      interval: 30s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+  # for MYSQL administration
+  mysql-admin:
+    image: ${MYSQL_ADMIN_IMAGE}:${MYSQL_ADMIN_VERSION}
+    container_name: ${MYSQL_ADMIN_NAME}
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    env_file:
+      - ".env"
+    ports:
+      - ${MYSQL_ADMIN_PORT}:8080
+    environment:
+      - PMA_ARBITRARY=1
+        #- PMA_ABSOLUTE_URI=http://localhost/manage/mysql-admin
+      - PMA_HOST=${MYSQL_ADMIN_MYSQL_HOST}
+      - PMA_PORT=${MYSQL_ADMIN_MYSQL_PORT}
+    volumes:
+      - type: volume
+        source: mysqladmin
+        target: /etc/phpmyadmin
+        volume:
+          nocopy: false
+    depends_on:
+      - ${MYSQL_NAME}
+        
+  # for PHP preprocessor
+  php:
+    container_name: ${PHP_NAME}
+    working_dir: /SPRS
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    env_file:
+      - ".env"
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    ports:
+      - ${PHP_PORT}:9000
+    volumes:
+      - type: bind
+        source: .
+        target: /SPRS
+      - type: bind
+        source: .docker/php/php.ini-development
+        target: /usr/local/etc/php/php.ini-development
+      - type: bind
+        source: .docker/php/php.ini-production
+        target: /usr/local/etc/php/php.ini-production
+      - type: bind
+        source: .docker/php/php-fpm.conf.default
+        target: /usr/local/etc/php-fpm.conf.default
+      - type: bind
+        source: .docker/php/www.conf
+        target: /usr/local/etc/php-fpm.d/www/conf
+    depends_on:
+      - ${MYSQL_NAME}
+
+  # for NGINX load-balancer (efficient during production)
+  nginx:
+    image: ${NGINX_IMAGE}:${NGINX_VERSION}
+    container_name: ${NGINX_NAME}
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    env_file:
+      - ".env"
+    ports:
+      - ${NGINX_PORT}:80
+    volumes:
+      - .docker/nginx/certificates/localhost.crt:/etc/ssl/certs/localhost.crt
+      - .docker/nginx/certificates/localhost.key:/etc/ssl/private/localhost.key
+      - type: bind
+        source: .
+        target: /SPRS
+      - type: bind
+        source: .docker/nginx/default.conf
+        target: /etc/nginx/conf.d/default.conf
+    depends_on:
+      - ${PHP_NAME}
+      - ${MYSQL_ADMIN_NAME}
+      - ${MYSQL_NAME}
+    links:
+      - ${PHP_NAME}
+      - ${MYSQL_ADMIN_NAME}
+
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  mysqldata:
+    driver: local
+  mysqladmin:
+    driver: local
+  

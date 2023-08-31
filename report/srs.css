@@ -1,0 +1,79 @@
+
+
+/* Update container style */
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Update heading style */
+h1 {
+    text-align: center;
+    color: #1da1f2;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Update label style */
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #1da1f2;
+}
+
+/* Update input and select style */
+input[type="text"],
+input[type="password"],
+.roles {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Update submit button style */
+input[type="submit"] {
+    background-color: #1da1f2;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* Update submit button hover color */
+input[type="submit"]:hover {
+    background-color: #0c8cc4;
+}
+
+/* Update error message style */
+.center {
+    text-align: center;
+    color: #e0245e;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Update register link style */
+.register-link a {
+    color: #1da1f2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+
+
+

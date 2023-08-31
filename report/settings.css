@@ -1,0 +1,226 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    
+  }
+  h1 {
+    text-align: center;
+    color:#000080; 
+    padding: 20px 0; /* Add some padding for better spacing */
+  }
+  
+  form {
+    max-width: 330px; /* Adjusted width for the form */
+    margin: 0 auto;
+  }
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  select,
+  textarea,
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px; /* Adjusted padding for consistency */
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+  }
+  textarea {
+    resize: vertical;
+  }
+  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  .categ {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  /* CSS for the speaker/feedback icon */
+.speaker-icon {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border-radius: 50%;
+    background-color: #1E90FF; /* Change this to your desired color */
+    margin: 0 auto;
+}
+
+.speaker-icon::before {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 35px;
+    width: 30px;
+    height: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.speaker-icon::after {
+    content: "";
+    position: absolute;
+    top: 45px;
+    left: 65px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #000080; 
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 15px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a i {
+  margin-right: 10px;
+}
+
+.sidebar a:hover {
+  color: #00a1f1;
+}
+
+.content {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+.menu-icon {
+  font-size: 24px;
+  color: #00a1f1;
+  cursor: pointer;
+}
+
+.logout {
+  position: fixed;
+  bottom: 20px;
+}
+  
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: #ccc; /* Placeholder for profile picture */
+}
+
+
+.profile-picture-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f2f2f2;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-picture::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.profile-picture:hover::before {
+    opacity: 1;
+}
+
+.profile-picture i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #fff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.profile-picture-container {
+    margin-top: 20px;
+}
+
+.profile-picture {
+    display: flex;
+    align-items: center;
+}
+
+.profile-picture img {
+    max-width: 80px;
+    border-radius: 50%;
+    margin-right: 10px;
+}

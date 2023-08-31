@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CiveFeedbacks</title>
+<style>
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    text-align: center;
+    color: #888;
+  }
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  input[type="text"],
+  input[type="number"],
+   select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  textarea {
+    resize: vertical;
+  }
+  input[type="submit"] {
+  width:620px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  .categ{
+  	   width: 622px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1 >CiveFeedbacks</h1>
+    <form id="feedbackForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+        
+        <label for="studentID">Student ID:</label>
+        <input type="text" id="studentID" name="studentID" required>
+        
+        <label for="email">Email Address:</label>
+        <input type="text" id="email" name="email" required>
+        
+        <label for="department">Department or Program:</label>
+        <input type="text" id="department" name="department" required>
+        
+        <label for="feedbackCategory">Feedback Category:</label>
+        <select id="feedbackCategory" name="feedbackCategory" required class="categ">
+          <option value="" disabled selected>Select Feedback Category</option>
+          <option value="Academic Courses">Academic Courses</option>
+          <option value="Faculty Performance">Faculty Performance</option>
+          <option value="Campus Facilities">Campus Facilities</option>
+          <option value="Extracurricular Activities">Extracurricular Activities</option>
+          <option value="Administrative Services">Administrative Services</option>
+          <option value="Overall Campus Experience">Overall Campus Experience</option>
+          <option value="Other">Other</option>
+        </select>
+        
+        <label for="specificFeedback">Specific Feedback:</label>
+        <label for="rating">Rating (Scale of 1 to 5):</label>
+        <input type="number" id="rating" name="rating" min="1" max="5" required>
+        
+        <label for="comments">Comments or Suggestions:</label>
+        <textarea id="comments" name="comments" rows="4" required></textarea>
+
+      <label for="anonymity">Anonymity Option:</label>
+      <input type="checkbox" id="anonymity" name="anonymity">
+      <span>Allow students to provide feedback anonymously if desired</span>
+      
+      <label for="timestamp">Timestamp:</label>
+      <input type="text" id="timestamp" name="timestamp" value="" disabled>
+      
+      <label for="additionalComments">Additional Comments:</label>
+      <textarea id="additionalComments" name="additionalComments" rows="4" disabled></textarea>
+      
+      <div class="g-recaptcha" data-sitekey="your-site-key"></div>
+      <br>
+      <input type="submit" value="Submit Feedback">
+    </form>
+  </div>
+  
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script>
+    // Update the timestamp field with the current date and time
+    function updateTimestamp() {
+      const timestampField = document.getElementById('timestamp');
+      const now = new Date();
+      timestampField.value = now.toLocaleString();
+    }
+    
+    // Toggle the additional comments field based on the anonymity option
+    function toggleAdditionalComments() {
+      const anonymityCheckbox = document.getElementById('anonymity');
+      const additionalCommentsField = document.getElementById('additionalComments');
+      
+      if (anonymityCheckbox.checked) {
+        additionalCommentsField.disabled = true;
+      } else {
+        additionalCommentsField.disabled = false;
+      }
+    }
+    
+    const feedbackForm = document.getElementById('feedbackForm');
+    feedbackForm.addEventListener('submit', function(event) {
+      // Add your form submission logic here
+      
+      // Prevent the default form submission
+      event.preventDefault();
+    });
+    
+    // Attach event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      updateTimestamp();
+      toggleAdditionalComments();
+      
+      const anonymityCheckbox = document.getElementById('anonymity');
+      anonymityCheckbox.addEventListener('change', toggleAdditionalComments);
+    });
+  </script>
+</body>
+</html>

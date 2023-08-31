@@ -1,0 +1,121 @@
+<?php
+// Initialize variables with default values or retrieve values from a database
+
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Process form data and update user settings in the database
+
+    // Redirect back to the settings page to prevent form resubmission
+    header("Location: settings.php");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="settings.css" type="text/css">
+ 
+    <title>CiveFeedbacks - Settings</title>
+</head>
+
+<body>
+    
+      
+<div class="sidebar" id="sidebar">
+    <a href="javascript:void(0);" onclick="closeNav();"><i class="fas fa-times"></i> Close</a>
+    <a href="user_dashboard.php"><i class="fas fa-home"></i> Home</a>
+    <a href="#"><i class="fas fa-exclamation"></i> About</a>
+<a href="#"><i class="fas fa-question-circle"></i> Help</a>
+<a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+<a href="displaySettings.html"><i class="fas fa-user"></i> My profile</a>
+<a href="#"><i class="fas fa-user-friends"></i> Friends</a>
+<a href="#"><i class="fas fa-bell"></i> Notifications</a>
+
+    <a href="#"><i class="fas fa-edit"></i> Edit my feedback</a>
+    <a href="#"><i class="fas fa-eye"></i> See feedbacks</a>
+    <a href="#"><i class="fas fa-eraser"></i> Delete feedbacks</a> 
+    <a href="#"><i class="fas fa-key"></i> Change Password</a>
+    <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+  
+</div>
+
+<div class="content">
+    <span class="menu-icon" onclick="openNav();">&#9776;</span>
+
+    
+</div>
+
+<script>
+    function openNav() {
+        document.getElementById("sidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("sidebar").style.width = "0";
+    }
+</script>
+
+    <div class="container">
+        <h1><span>Update my details </span></h1>
+
+        <form method="POST" action="">
+            <label for="yearOfStudy">Year of Study:</label>
+            <input id="yos" name="yos" type="number" min="1" max="5">
+
+            <label for="course">Course:</label>
+            <input type="text" id="course" name="course" >
+
+            <label for="Phone number">Phone number:</label>
+            <input type="text" id="interests" name="phonenumber" type="number" >
+
+            <label for="interests">Email:</label>
+            <input type="text" id="email" name="email">
+
+            <label for="interests">Interests:</label>
+            <input type="text" id="interests" name="interests">
+
+
+            <label for="DOB">Date of Birth:</label>
+            <input type="date" id="DOB" name="DOB">
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="" disabled selected>Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="null">I prefer not to say</option>
+            </select>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address">
+
+            <label for="graduationYear">Graduation Year:</label>
+            <input type="number" id="graduationYear" name="graduationYear" min="1" max="5">
+
+
+
+
+            <label for="shortBio">Short Bio:</label>
+            <textarea id="shortBio" name="shortBio" rows="4"></textarea>
+            
+            <div class="profile-picture-container">
+                <label for="profilePicture">Profile Picture:</label>
+                <label class="profile-picture" for="profilePicture">
+                    <img src="user-profile.png" alt="Profile Picture">
+                    <i class="fas fa-camera"></i>
+                </label>
+                <input type="file" id="profilePicture" name="profilePicture" style="display: none;">
+            </div>
+
+            <input type="submit" value="Save Settings">
+        </form>
+    </div>
+
+    <!-- Your existing scripts and other content -->
+
+</body>
+</html>
