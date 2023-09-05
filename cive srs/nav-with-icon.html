@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Website</title>
+    <!-- Add Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #333; /* Updated color */
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a i {
+            margin-right: 10px;
+        }
+
+        .sidebar a:hover {
+            color: #00a1f1;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            color: #00a1f1;
+            cursor: pointer;
+        }
+
+        .logout {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+    <a href="javascript:void(0);" onclick="closeNav();"><i class="fas fa-times"></i> Close</a>
+    <a href="#"><i class="fas fa-home"></i> Home</a>
+    <a href="#"><i class="fas fa-user"></i> About</a>
+    <a href="#"><i class="fas fa-cog"></i> Services</a>
+    <a href="#"><i class="fas fa-images"></i> Portfolio</a>
+    <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
+    <a href="#"><i class="fas fa-user-plus"></i> Register</a>
+    <a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+    <a href="#"><i class="fas fa-envelope"></i> Message</a> <!-- New link with icon -->
+</div>
+
+<div class="content">
+    <span class="menu-icon" onclick="openNav();">&#9776;</span>
+    <h1>Welcome to Our Website</h1>
+    
+</div>
+
+<script>
+    function openNav() {
+        document.getElementById("sidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("sidebar").style.width = "0";
+    }
+</script>
+
+</body>
+</html>

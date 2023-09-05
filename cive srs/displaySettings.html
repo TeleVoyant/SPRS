@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <link rel="stylesheet" href="settings.css" type="text/css">
+ 
+    <title>CiveFeedbacks - Settings</title>
+</head>
+<body>
+    <!-- Your existing HTML content -->
+
+
+<div class="sidebar" id="sidebar">
+    <a href="javascript:void(0);" onclick="closeNav();"><i class="fas fa-times"></i> Close</a>
+    <a href="user_dashboard.php"><i class="fas fa-home"></i> Home</a>
+    <a href="#"><i class="fas fa-exclamation"></i> About</a>
+<a href="#"><i class="fas fa-question-circle"></i> Help</a>
+<a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+<a href="displaySettings.html"><i class="fas fa-user"></i> My profile</a>
+<a href="#"><i class="fas fa-user-friends"></i> Friends</a>
+<a href="#"><i class="fas fa-bell"></i> Notifications</a>
+
+    <a href="#"><i class="fas fa-edit"></i> Edit my feedback</a>
+    <a href="#"><i class="fas fa-eye"></i> See feedbacks</a>
+    <a href="#"><i class="fas fa-eraser"></i> Delete feedbacks</a> 
+    <a href="#"><i class="fas fa-key"></i> Change Password</a>
+    <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+  
+</div>
+
+<div class="content">
+    <span class="menu-icon" onclick="openNav();">&#9776;</span>
+
+    
+</div>
+
+<script>
+    function openNav() {
+        document.getElementById("sidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("sidebar").style.width = "0";
+    }
+</script>
+
+    <div class="container">
+        <h1><span>My details </span></h1>
+
+        
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Year of Study</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Course</td>
+                    <td>Bsc. Computer Science Engineering</td>
+                    </tr>
+
+                    <tr>
+                        <td>Phonenumber</td>
+                        <td>0625534921</td>
+                        </tr>
+
+                        <tr>
+                            <td> Email </td>
+                            <td>youngshelly@gmail.com  </td>
+                            </tr>
+               
+                            <tr>
+                                <td> Interests </td>
+                                <td> Coding, Music, Poetry  </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Date of birth </td>
+                                    <td>30-07-1999  </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Gender  </td>
+                                        <td>Male </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td> Address  </td>
+                                            <td>Dodoma  </td>
+                                            </tr>
+                                            <tr>
+                                                <td> Graduation year </td>
+                                                <td>  2025</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>My Biography  </td>
+                                                    <td> I am Sophomore computer science Engineer at Cive, i am highly passionate in coding and programming and 
+                                                        tech in general.  </td>
+                                                    </tr>
+                                       
+                                   
+
+
+            </table>
+        </div>
+    </div>
+
+    <!-- existing scripts and other content -->
+
+</body>
+</html>

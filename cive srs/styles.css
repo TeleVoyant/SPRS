@@ -1,0 +1,151 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    color:#000080; 
+    padding: 20px 0;
+  }
+  
+  form {
+    max-width: 330px;
+    margin: 0 auto;
+  }
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="submit"]
+  {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  .roles{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+
+.speaker-icon {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border-radius: 50%;
+    background-color: #1E90FF;
+    margin: 0 auto;
+}
+
+.speaker-icon::before {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 35px;
+    width: 30px;
+    height: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.speaker-icon::after {
+    content: "";
+    position: absolute;
+    top: 45px;
+    left: 65px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #999;
+}
+.register-link {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.register-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Additional styles for the settings page */
+.profile-picture {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-picture::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.profile-picture:hover::before {
+  opacity: 0.6;
+}
+
+.profile-picture i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  color: #ffffff;
+}
+
